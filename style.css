@@ -21,6 +21,10 @@ h1 {
     font-size: 40px;
     padding: 20px;
     margin-top: 20px;
+
+    @media only screen and (max-width: 500px){
+        font-size: 30px;
+    }
 }
 
 .clock {
