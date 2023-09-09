@@ -39,10 +39,11 @@ rotateHourHand();
 function digitalTime() {
   const currDate = new Date();
   let hours = currDate.getHours();
-  const minutes = currDate.getMinutes();
+  let minutes = currDate.getMinutes();
   let seconds = currDate.getSeconds();
 
   let meridian = "";
+
   if (hours > 12) {
     hours = hours - 12;
     meridian = "PM";
@@ -50,15 +51,20 @@ function digitalTime() {
     meridian = "PM";
   }
 
-  hours = `0${hours}`;
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
 
   if (seconds < 10) {
     seconds = `0${seconds}`;
   }
 
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   const element = document.querySelector(".digital");
   element.innerHTML = hours + ":" + minutes + ":" + seconds + " " + meridian;
-  console.log(element.innerHTML, seconds, hours);
 }
 
 setInterval(digitalTime, 1000);
